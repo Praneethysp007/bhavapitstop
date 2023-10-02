@@ -17,9 +17,8 @@ pipeline {
 
         stage('build') {
             steps{
-                rtNugetCli(
-                    command : 'build'
-                    args : 'src/pitstop.sln',
+                rtNugetRun(
+                    args : 'build src/pitstop.sln',
                     resolverid : 'pitstoppipeline' 
                 )
                 rtNugetResolver (
