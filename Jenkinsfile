@@ -17,15 +17,16 @@ pipeline {
 
         stage('build') {
             steps{
+                rtNugetRun(
+                    args : 'build src/pitstop.sln',
+                    resolverid : 'pitstoppipeline' 
+                )
                 rtNugetResolver (
                     id : 'pitstoppipeline',
                     serverid : 'myinstance',
                     repo : 'pitstop-nuget' 
                 )
-                rtNugetRun(
-                    args : 'build src/pitstop.sln',
-                    resolverid : 'pitstoppipeline' 
-                )
+
                 rtPublishBuildInfo(
                     serverid: 'newinstance'
                 )
