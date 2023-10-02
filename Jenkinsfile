@@ -46,7 +46,7 @@ pipeline {
             steps{
                 
 
-                dotnet sonarscanner begin -Dsonar.organization=myorganisationysp -Dsonar.projectKey=myorganisationysp_pitstop -Dsonar.host=sonar.host.url=https://sonarcloud.io  sh "dotnet build src/pitstop" dotnet sonarscanner end
+                dotnet sonarscanner begin -Dsonar.organization=myorganisationysp -Dsonar.projectKey=myorganisationysp_pitstop   sh "dotnet build src/pitstop" dotnet sonarscanner end
             }
         }
 
