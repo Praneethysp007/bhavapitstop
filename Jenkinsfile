@@ -17,12 +17,12 @@ pipeline {
 
         stage('build') {
             steps{
-                rtDotnetResolver (
+                rtNugetResolver (
                     id : 'pitstoppipeline',
                     serverid : 'myinstance',
                     repo : 'pitstop-nuget' 
                 )
-                rtDotnetRun(
+                rtNugetRun(
                     args : 'build src/pitstop.sln',
                     resolverid : 'pitstoppipeline' 
                 )
