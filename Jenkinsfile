@@ -43,13 +43,28 @@ pipeline {
             }
         }
         stage('sonar') {
-            steps{
+            steps {
+                script {
+                    def scannerHome = tool name: 'SonarScanner', type: 'hudson.plugins.sonar.MsBuildSonarRunnerInstallation'
+
+                    // Begin SonarQube analysis with the configured SonarQube server URL
+                   withSonarQubeEnv('SONAR_CLOUD') {
+                    sh """
+                      ${scannerHome}/bin/sonar-scanner \
+                      -Dsonar.organization=myorganisationysp \
+                      -Dsonar.projectKey=myorganisationysp_pitstop
+                    """
                 
-                withSonarQubeEnv('SONAR_CLOUD') {
-                    dotnet sonarscanner begin -Dsonar.organization=myorganisationysp -Dsonar.projectKey=myorganisationysp_pitstop   sh "dotnet build src/pitstop" dotnet sonarscanner end
-              }
-           }
+                // Build your .NET project
+                    sh "dotnet build src/pitstop"
+                
+                // End SonarQube analysis
+                    sh "${scannerHome}/bin/sonar-scanner"
+            }
         }
+    }
+}
+
 
         stage('results') {
             steps{
