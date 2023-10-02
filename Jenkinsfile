@@ -20,7 +20,7 @@ pipeline {
                 rtDotnetResolver (
                     id : 'pitstoppipeline',
                     serverid : 'myinstance',
-                    repo : 'mypitstop-nuget-local' 
+                    repo : 'pitstop-nuget' 
                 )
                 rtDotnetRun(
                     args : 'build src/pitstop.sln',
