@@ -45,9 +45,10 @@ pipeline {
         stage('sonar') {
             steps{
                 
-
-                dotnet sonarscanner begin -Dsonar.organization=myorganisationysp -Dsonar.projectKey=myorganisationysp_pitstop   sh "dotnet build src/pitstop" dotnet sonarscanner end
-            }
+                withSonarQubeEnv('SONAR_CLOUD') {
+                    dotnet sonarscanner begin -Dsonar.organization=myorganisationysp -Dsonar.projectKey=myorganisationysp_pitstop   sh "dotnet build src/pitstop" dotnet sonarscanner end
+              }
+           }
         }
 
         stage('results') {
