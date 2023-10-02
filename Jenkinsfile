@@ -17,19 +17,22 @@ pipeline {
 
         stage('build') {
             steps{
-                rtDotnetRun(
-                    args : 'build src/pitstop.sln',
-                    resolverid : 'pitstoppipeline' 
-                )
-                rtDotnetResolver (
-                    id : 'pitstoppipeline',
-                    serverid : 'myinstance',
-                    repo : 'pitstop-nuget' 
+                sh(script: 'dotnet build src/pitstop.sln')
+
+
+                rtUpload(
+                    serverId: 'myinstance',
+                    spec: """{
+                        "files": [
+                            {
+                                "pattern": "**/*.dll",
+                                "target": "pitstop-generic-local/pitstop-generic-local/"
+                            }
+                        ]
+                    }""" 
+
                 )
 
-                rtPublishBuildInfo(
-                    serverid: 'myinstance'
-                )
             }
         }
 
