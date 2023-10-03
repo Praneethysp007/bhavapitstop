@@ -48,7 +48,7 @@ pipeline {
                     def scannerHome = tool name: 'SonarScanner', type: 'hudson.plugins.sonar.MsBuildSonarRunnerInstallation'
 
                     
-                   withSonarQubeEnv('SONAR_CLOUD') {
+                   withSonarQubeEnv('sonarcube') {
                     sh """
                       ${scannerHome}/bin/sonar-scanner \
                       -Dsonar.organization=myorganisationysp \
