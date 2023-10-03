@@ -42,22 +42,13 @@ pipeline {
                 sh(script: 'env SONAR_TOKEN=22379b81e94c42a9f1e19710a7fa4422402992f0')
             }
         }
-        stage('sonar') {
+        stage('SonarQube analysis') {
             steps {
-                script {
-                    // def scannerHome = tool name: 'SonarScanner', type: 'hudson.plugins.sonar.MsBuildSonarRunnerInstallation'
-
-                    
-                   withSonarQubeEnv('sonarcube') {
-                    sh """
-                      -Dsonar.organization=myorganisationysp \
-                      -Dsonar.projectKey=myorganisationysp_pitstop
-                    """
-                    sh "dotnet build src/pitstop"
-            }
+                withSonarQubeEnv('sonarcube') {
+                          sh 'dotnet build src/pitstop.sln sonar:sonar -Dsonar.organization=myorganisationysp -Dsonar.token=22379b81e94c42a9f1e19710a7fa4422402992f0 -Dsonar.projectKey=myorganisationysp_pitstop'
+                }
+            }    
         }
-    }
-}
 
 
         stage('results') {
