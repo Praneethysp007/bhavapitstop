@@ -37,7 +37,7 @@ pipeline {
         }
         stage('download sonar') {
             steps{
-                sh (script: 'dotnet tool install --global dotnet-sonarscanner')
+                // sh (script: 'dotnet tool install --global dotnet-sonarscanner')
 
                 sh(script: 'env SONAR_TOKEN=22379b81e94c42a9f1e19710a7fa4422402992f0')
             }
@@ -47,18 +47,14 @@ pipeline {
                 script {
                     def scannerHome = tool name: 'SonarScanner', type: 'hudson.plugins.sonar.MsBuildSonarRunnerInstallation'
 
-                    // Begin SonarQube analysis with the configured SonarQube server URL
+                    
                    withSonarQubeEnv('SONAR_CLOUD') {
                     sh """
                       ${scannerHome}/bin/sonar-scanner \
                       -Dsonar.organization=myorganisationysp \
                       -Dsonar.projectKey=myorganisationysp_pitstop
                     """
-                
-                // Build your .NET project
                     sh "dotnet build src/pitstop"
-                
-                // End SonarQube analysis
                     sh "${scannerHome}/bin/sonar-scanner"
             }
         }
