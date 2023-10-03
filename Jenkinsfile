@@ -35,23 +35,22 @@ pipeline {
 
             }
         }
-        stage('report') {
-            steps {
-                junit testResults: '**/*.trx'
-             }
-        }
+        // stage('report') {
+        //     steps {
+        //         junit testResults: '**/*.trx'
+        //      }
+        // }
 
         stage('download sonar') {
             steps{
-                // sh (script: 'dotnet tool install --global dotnet-sonarscanner')
 
-                sh(script: 'env SONAR_TOKEN=22379b81e94c42a9f1e19710a7fa4422402992f0')
+                  sh(script: 'env SONAR_TOKEN=22379b81e94c42a9f1e19710a7fa4422402992f0')
             }
         }
         stage('SonarQube analysis') {
             steps {
                 withSonarQubeEnv('sonarcube') {
-                          sh 'dotnet build src/pitstop.sln sonar:sonar -Dsonar.organization=myorganisationysp -Dsonar.token=22379b81e94c42a9f1e19710a7fa4422402992f0 -Dsonar.projectKey=myorganisationysp_pitstop'
+                          sh 'dotnet build src/pitstop.sln sonar:sonar -Dsonar.organization=myorganisationysp -Dsonar.projectKey=myorganisationysp_pitstop'
                 }
             }    
         }
