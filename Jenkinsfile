@@ -37,10 +37,10 @@ pipeline {
         }
         stage('report') {
             steps {
-                junit testResults: '**/*.xml'
+                junit testResults: '**/*.trx'
              }
         }
-        
+
         stage('download sonar') {
             steps{
                 // sh (script: 'dotnet tool install --global dotnet-sonarscanner')
