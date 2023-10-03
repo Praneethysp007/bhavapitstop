@@ -50,12 +50,10 @@ pipeline {
                     
                    withSonarQubeEnv('sonarcube') {
                     sh """
-                      ${scannerHome}/bin/sonar-scanner \
                       -Dsonar.organization=myorganisationysp \
                       -Dsonar.projectKey=myorganisationysp_pitstop
                     """
                     sh "dotnet build src/pitstop"
-                    sh "${scannerHome}/bin/sonar-scanner"
             }
         }
     }
