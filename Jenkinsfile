@@ -49,6 +49,11 @@ pipeline {
                 }
             }    
         }
+        stage('report') {
+            steps {
+                junit testResults: '**/*.csproj'
+             }
+         }
 
 
         stage('results') {
