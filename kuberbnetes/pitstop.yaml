@@ -34,10 +34,10 @@ spec:
       volumes: 
         - name: rabbitmq
           configMap: 
-            name: default_user
+            name: defaultuser
         - name: rabbitmq-sec
           secret: 
-            name: default_pass
+            name: defaultpass
                 
         - name: rabbitmq-pvc    
           persistentVolumeClaim:
