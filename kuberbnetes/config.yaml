@@ -4,12 +4,12 @@ kind: ConfigMap
 metadata:
   name: defaultuser
 data:
-  default_user: rabbitmquser
+  username: rabbitmquser
 ---
 apiVersion: v1
 kind: Secret
 metadata:
   name: defaultpass
 data:
-  default_pass: REVCbWJ3a1Nyenk5RDFUOWNKZmE=
+  password: REVCbWJ3a1Nyenk5RDFUOWNKZmE=
 

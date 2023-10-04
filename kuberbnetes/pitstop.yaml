@@ -28,22 +28,22 @@ spec:
             - name: Password  
               value: DEBmbwkSrzy9D1T9cJfa
           volumeMounts: 
-            # - name: rabbitmq
-            #   mountPath: /etc/pitstop/ 
-            # - name: rabbitmq-sec
-            #   mountPath: /etc/pitstop/   
+            - name: rabbitmq
+              mountPath: /etc/pitstop/ 
+            - name: rabbitmq-sec
+              mountPath: /etc/pitstop/   
             - name: rabbitmq-pvc 
               mountPath: /var/lib/rabbitmq
           ports: 
             - containerPort: 15672
               protocol: TCP
       volumes: 
-        # - name: rabbitmq
-        #   configMap: 
-        #     name: defaultuser
-        # - name: rabbitmq-sec
-        #   secret: 
-        #     name: defaultpass
+        - name: rabbitmq
+          configMap: 
+            name: defaultuser
+        - name: rabbitmq-sec
+          secret: 
+            name: defaultpass
                 
         - name: rabbitmq-pvc    
           persistentVolumeClaim:
