@@ -29,9 +29,9 @@ spec:
               value: DEBmbwkSrzy9D1T9cJfa
           volumeMounts: 
             - name: rabbitmq
-              mountPath: /etc/pitstop/ 
+              mountPath: /etc/pitstop/username
             - name: rabbitmq-sec
-              mountPath: /etc/pitstop/   
+              mountPath: /etc/pitstop/password   
             - name: rabbitmq-pvc 
               mountPath: /var/lib/rabbitmq
           ports: 
