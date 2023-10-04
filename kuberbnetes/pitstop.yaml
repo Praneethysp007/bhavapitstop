@@ -29,8 +29,8 @@ spec:
             - name: rabbitmq-pvc 
               mountPath: /var/lib/rabbitmq
            ports: 
-            - containerPort: 15672
-              protocol: TCP
+             - containerPort: 15672
+               protocol: TCP
       volumes: 
         - name: rabbitmq
           configMap: 
