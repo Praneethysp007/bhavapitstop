@@ -36,6 +36,7 @@ spec:
               mountPath: /var/lib/rabbitmq
           ports: 
             - containerPort: 15672
+              hostPort: 
               protocol: TCP
       volumes: 
         # - name: rabbitmq
