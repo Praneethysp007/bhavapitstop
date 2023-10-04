@@ -28,9 +28,9 @@ spec:
               mountPath: /etc/pitstop/ 
             - name: rabbitmq-pvc 
               mountPath: /var/lib/rabbitmq
-           ports: 
-             - containerPort: 15672
-               protocol: TCP
+          ports: 
+            - containerPort: 15672
+              protocol: TCP
       volumes: 
         - name: rabbitmq
           configMap: 
