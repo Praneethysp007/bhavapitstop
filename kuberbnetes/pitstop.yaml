@@ -43,7 +43,7 @@ spec:
             name: defaultuser
         - name: rabbitmq-sec
           secret: 
-            name: defaultpass
+            secretName: defaultpass
                 
         - name: rabbitmq-pvc    
           persistentVolumeClaim:
