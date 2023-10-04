@@ -9,4 +9,4 @@ spec:
   storageClassName: managed-premium
   resources:
     requests:
-      storage: 0.5Gi
+      storage: 1Gi
