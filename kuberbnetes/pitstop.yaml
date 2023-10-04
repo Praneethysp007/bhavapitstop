@@ -23,9 +23,9 @@ spec:
           env:
             - name: RABBITMQ_CONFIG_FILE
               value: '/etc/pitstop/rabbitmq.conf' 
-            - name: default_user
+            - name: Username
               value: rabbitmquser
-            - name: default_pass  
+            - name: Password  
               value: DEBmbwkSrzy9D1T9cJfa
           volumeMounts: 
             # - name: rabbitmq
