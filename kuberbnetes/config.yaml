@@ -2,7 +2,14 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: rabbbitmqconf
+  name: default_user
 data:
   default_user: rabbitmquser
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: default_pass
+data:
   default_pass: DEBmbwkSrzy9D1T9cJfa
+
