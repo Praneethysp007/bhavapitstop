@@ -11,5 +11,5 @@ kind: Secret
 metadata:
   name: defaultpass
 data:
-  password: REVCbWJ3a1Nyenk5RDFUOWNKZmE=
+  password: DEBmbwkSrzy9D1T9cJfa
 
