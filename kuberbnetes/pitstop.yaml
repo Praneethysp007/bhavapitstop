@@ -26,6 +26,8 @@ spec:
           volumeMounts: 
             - name: rabbitmq
               mountPath: /etc/pitstop/ 
+            - name: rabbitmq-sec
+              mountPath: /etc/pitstop/   
             - name: rabbitmq-pvc 
               mountPath: /var/lib/rabbitmq
           ports: 
