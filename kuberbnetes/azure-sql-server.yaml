@@ -25,3 +25,10 @@ spec:
               value: "Developer"
             - name: SA_PASSWORD
               value: "8jkGh47hnDw89Haq8LN2"  
+          volumeMounts:
+            - name: sqlserverdata
+              mountPath: /var/opt/mssql
+      volumes:
+        - name: sqlserverdata
+          persistentVolumeClaim:
+            claimName: sqlserverdata-pvc    
