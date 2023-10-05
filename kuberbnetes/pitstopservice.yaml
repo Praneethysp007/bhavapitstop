@@ -11,13 +11,8 @@ spec:
     app: pitstop
   ports:
     - name: managment
-
       targetPort: 15672
       port: 15672
-      protocol: TCP
-      
-    - name: managment
-
-      targetPort: 15672
-      port: 15672
-      protocol: TCP  
+    - name: message
+      targetPort: 5672
+      port: 5672
