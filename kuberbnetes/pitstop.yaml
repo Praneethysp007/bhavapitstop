@@ -35,6 +35,6 @@ spec:
       volumes: 
         - name: rabbitmq
           configMap: 
-            name: rabbbitmq.conf
+        - name: rabbbitmq.conf
           persistentVolumeClaim:
             claimName: rabbitmq-pvc
