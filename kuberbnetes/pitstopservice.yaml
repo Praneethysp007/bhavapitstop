@@ -8,7 +8,7 @@ metadata:
 spec:
   type: NodePort
   selector:
-    app: pitstop
+    app: rabbitmq
   ports:
     - name: managment
       targetPort: 15672
