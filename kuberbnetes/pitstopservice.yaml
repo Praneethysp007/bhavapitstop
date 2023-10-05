@@ -12,5 +12,5 @@ spec:
   ports:
     - nodePort: 31001
       targetPort: 5672
-      port: 5672
+      port: 15672
       protocol: TCP
