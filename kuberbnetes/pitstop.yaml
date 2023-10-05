@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata: 
-  name:  pitstop-project
+  name:  rabbitmq-deploy
   labels:
     env: dev
 spec:
@@ -10,34 +10,31 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      app: pitstop
+      app: rabbitmq
   template:
     metadata: 
-      name: pitstop-pod
+      name: rabbitmq-pod
       labels:
-        app: pitstop
+        app: rabbitmq
     spec:
       containers:
-        - name: rabbitmq
+        - name: rabbitmq-con
           image: rabbitmq:3-management-alpine
           env:
             - name: RABBITMQ_CONFIG_FILE
               value: '/etc/pitstop/rabbitmq.conf' 
           volumeMounts: 
             - name: rabbitmq
-              mountPath: /etc/pitstop/rabbitmq
+              mountPath: /etc/pitstop/rabbitmq/ 
             - name: rabbitmq-pvc 
               mountPath: /var/lib/rabbitmq
-          ports: 
-            - containerPort: 5672
+           ports: 
             - containerPort: 15672
+            - containerPort: 5672
               protocol: TCP
       volumes: 
         - name: rabbitmq
-          hostPath:
-            path: /home/ubuntu/bhavapitstop/src/rabbitmq
-        - name: rabbitmq-pvc  
+          configMap: 
+            name: rabbbitmq.conf
           persistentVolumeClaim:
-            claimName: rabbitmq-pvc 
-         
-
+            claimName: rabbitmq-pvc
