@@ -34,7 +34,7 @@ spec:
       volumes: 
         - name: rabbitmq
           hostPath:
-            path: ~/bhavapitstop/src/rabbitmq
+            path: /home/ubuntu/bhavapitstop/src/rabbitmq
         - name: rabbitmq-pvc  
           persistentVolumeClaim:
             claimName: rabbitmq-pvc 
