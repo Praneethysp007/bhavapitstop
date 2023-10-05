@@ -5,4 +5,4 @@ metadata:
   name: rabbbitmq.conf
 data:
   Username: rabbitmquser
-  # Password: DEBmbwkSrzy9D1T9cJfa
+  Password: DEBmbwkSrzy9D1T9cJfa
