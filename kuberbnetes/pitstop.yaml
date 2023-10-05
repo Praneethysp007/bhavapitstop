@@ -23,29 +23,18 @@ spec:
           env:
             - name: RABBITMQ_CONFIG_FILE
               value: '/etc/pitstop/rabbitmq.conf' 
-            - name: Username
-              value: rabbitmquser
-            - name: Password  
-              value: DEBmbwkSrzy9D1T9cJfa
           volumeMounts: 
             - name: rabbitmq
-              mountPath: /etc/pitstop/username
-            - name: rabbitmq-sec
-              mountPath: /etc/pitstop/password   
+              mountPath: /etc/pitstop/rabbitmq/ 
             - name: rabbitmq-pvc 
               mountPath: /var/lib/rabbitmq
-          ports: 
+           ports: 
             - containerPort: 15672
               protocol: TCP
       volumes: 
         - name: rabbitmq
           configMap: 
-            name: defaultuser
-        - name: rabbitmq-sec
-          secret: 
-            secretName: defaultpass
-                
-        - name: rabbitmq-pvc    
+            name: rabbbitmq.conf
           persistentVolumeClaim:
             claimName: rabbitmq-pvc 
          
