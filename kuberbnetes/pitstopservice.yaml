@@ -10,7 +10,14 @@ spec:
   selector:
     app: pitstop
   ports:
-    - nodePort: 31001
+    - name: managment
+
       targetPort: 15672
       port: 15672
       protocol: TCP
+      
+    - name: managment
+
+      targetPort: 15672
+      port: 15672
+      protocol: TCP  
